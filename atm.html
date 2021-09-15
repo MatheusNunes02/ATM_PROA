@@ -13,14 +13,17 @@
 
 			switch(escolha){
 				case 1:
+					autenticacao();
 					ver_saldo();
 					break;
 
 				case 2:
+					autenticacao();
 					ver_extrato();
 					break;
 
 				case 3:
+					autenticacao();
 					fazer_saque();
 					break;
 
@@ -29,6 +32,7 @@
 					break;
 
 				case 5:
+					autenticacao();
 					fazer_transferencia();
 					break;
 
@@ -45,32 +49,17 @@
 		}		
 
 		function ver_saldo() {
-			var pass = prompt("Insira a senha");
-			if(pass == 3589){
-				alert('Seu saldo atual é: ' + saldo);
-				inicio();
-			}else{
-				alert("Senha incorreta, redirecionando ao Inicio");
-				inicio();
-			}
+			alert('Seu saldo atual é: ' + saldo);
+			inicio();
 		}
 
 		function ver_extrato(){
-			var pass = prompt("Insira a senha");
-			if(pass == 3589){
 				alert(` Depositou R$200.00 na conta às 18:10 de dom.\n Transferência para a conta 2934 de R$100.00 às 12:30 de seg. \n Saque de R$50 realizado na conta às 15:30 de ter.\n Compra de R$50 no Produto: Tênis radical às 19:50 de qui.`);
 				inicio();
-			}else{
-				alert("Senha incorreta, redirecionando ao Inicio");
-				inicio();
-			}
-			
 		}
 
 		
 		function fazer_saque() {
-			var pass = prompt("Insira a senha");
-			if(pass == 3589){
 				var saque = parseFloat(prompt('Qual o valor para saque?'));
 				if (isNaN(saque) || saque === '' ) {
 					alert('Por favor, informe um número:');
@@ -84,12 +73,7 @@
 					alert('Seu saldo atual é: ' + saldo);
 					inicio();
 				}
-			}else{
-				alert("Senha incorreta, redirecionando ao Inicio");
-				inicio();
-			}
-	
-		}
+		}	
 
 		function fazer_deposito() {
 			var deposito = parseFloat(prompt('Qual o valor para depósito?'));
@@ -107,9 +91,7 @@
 			}
 		}
 
-		function fazer_transferencia(){
-			var pass = prompt("Insira a senha");
-			if(pass == 3589){
+		function fazer_transferencia(){	
 				var numConta = parseInt(prompt("Para qual conta deseja realizar a transferência?"));
 				if(isNaN(numConta) || numConta ==='' || numConta<=0){
 					alert('Por favor, informe um número de conta válido');
@@ -128,13 +110,15 @@
 						alert('Seu saldo atual é: ' + saldo);
 						inicio();
 					}
-				}
-			}else{
+				}	
+			}
+
+		function autenticacao(){
+			var pass = prompt("Insira a senha");
+			if(pass != 3589){
+				alert("Senha incorreta, redirecionando ao Inicio");
 				inicio();
 			}
-		
-			
-			
 		}
 
 		function sair() {
