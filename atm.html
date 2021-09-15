@@ -50,6 +50,7 @@
 				alert('Seu saldo atual é: ' + saldo);
 				inicio();
 			}else{
+				alert("Senha incorreta, redirecionando ao Inicio");
 				inicio();
 			}
 		}
@@ -60,6 +61,7 @@
 				alert(` Depositou R$200.00 na conta às 18:10 de dom.\n Transferência para a conta 2934 de R$100.00 às 12:30 de seg. \n Saque de R$50 realizado na conta às 15:30 de ter.\n Compra de R$50 no Produto: Tênis radical às 19:50 de qui.`);
 				inicio();
 			}else{
+				alert("Senha incorreta, redirecionando ao Inicio");
 				inicio();
 			}
 			
@@ -75,12 +77,15 @@
 					fazer_saque();
 				}else if(saque>saldo || saque<=0){
 					alert('Operação não autorizada');
+					fazer_saque();
 				} else {
 					saldo -= saque;
-					
-					ver_saldo();
+			
+					alert('Seu saldo atual é: ' + saldo);
+					inicio();
 				}
 			}else{
+				alert("Senha incorreta, redirecionando ao Inicio");
 				inicio();
 			}
 	
@@ -97,7 +102,8 @@
 				fazer_deposito();
 			} else {
 				saldo += deposito;
-				ver_saldo();
+				alert('Seu saldo atual é: ' + saldo);
+				inicio();
 			}
 		}
 
@@ -119,7 +125,8 @@
 						fazer_transferencia(transferencia)
 					}else{
 						saldo -= transferencia;
-						ver_saldo();
+						alert('Seu saldo atual é: ' + saldo);
+						inicio();
 					}
 				}
 			}else{
