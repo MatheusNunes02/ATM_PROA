@@ -13,15 +13,16 @@
 
 			switch(escolha){
 				case 1:
-					autenticacao(ver_saldo);
+					ver_saldo();
 					break;
 
 				case 2:
-					autenticacao(ver_extrato);
+					
+					ver_extrato();
 					break;
 
 				case 3:
-					autenticacao(fazer_saque);
+					fazer_saque();
 					break;
 
 				case 4:
@@ -29,7 +30,7 @@
 					break;
 
 				case 5:
-					autenticacao(numConta_transferencia);
+					numConta_transferencia();
 					break;
 
 				case 6:
@@ -45,13 +46,15 @@
 		}		
 
 		function ver_saldo() {
+			autenticacao();
 			alert('Seu saldo atual é: ' + saldo);
 			inicio();
 		}
 
 		function ver_extrato(){
-				alert(` Depositou R$200.00 na conta às 18:10 de dom.\n Transferência para a conta 2934 de R$100.00 às 12:30 de seg. \n Saque de R$50 realizado na conta às 15:30 de ter.\n Compra de R$50 no Produto: Tênis radical às 19:50 de qui.`);
-				inicio();
+			autenticacao();
+			alert(` Depositou R$200.00 na conta às 18:10 de dom.\n Transferência para a conta 2934 de R$100.00 às 12:30 de seg. \n Saque de R$50 realizado na conta às 15:30 de ter.\n Compra de R$50 no Produto: Tênis radical às 19:50 de qui.`);
+			inicio();
 		}
 
 		
@@ -64,8 +67,10 @@
 					alert('Operação não autorizada');
 					fazer_saque();
 				} else {
+					autenticacao();
 					saldo -= saque;
-					ver_saldo();
+					alert('Seu saldo atual é: ' + saldo);
+					inicio();
 				}
 		}	
 
@@ -79,8 +84,10 @@
 				alert('Operação não autorizada');
 				fazer_deposito();
 			} else {
+				autenticacao();
 				saldo += deposito;
-				ver_saldo();
+				alert('Seu saldo atual é: ' + saldo);
+				inicio();
 			}
 		}
 
@@ -104,23 +111,20 @@
 				alert('Operação inválida');
 				fazer_transferencia();
 			}else{
+				autenticacao();
 				saldo -= transferencia;
-				ver_saldo();
+				alert('Seu saldo atual é: ' + saldo);
+				inicio();
 			}	
 		}
 
-		function transferencia_total(){
-			numConta_transferencia();
-			fazer_transferencia();
-		}
 
-		function autenticacao(func){
+		function autenticacao(){
 			var pass = prompt("Insira a senha");
 			if(pass != 3589){
-				alert("Senha incorreta, tente novamente");
+				alert("Senha incorreta, tente novamente!");
 				autenticacao();
 			}
-			func();
 		}
 
 		function sair() {
